@@ -11,6 +11,7 @@ A simple web application to generate random lottery numbers with theme switching
 *   Responsive design for different screen sizes.
 *   Dark/Light mode toggle for improved user experience.
 *   Theme preference persistence using `localStorage`.
+*   Partnership Inquiry form powered by Formspree for lead generation.
 
 ## Detailed Outline
 
@@ -21,11 +22,15 @@ A simple web application to generate random lottery numbers with theme switching
     *   A toggle switch/button in the UI.
     *   JavaScript logic to switch classes on the `body` or `html` element.
     *   Persistence of the selected theme in the browser's local storage.
+4.  **Partnership Inquiry Form**:
+    *   A clean, professional form section below the lotto generator.
+    *   Input fields for Name, Email, and Message.
+    *   Integration with Formspree for reliable email delivery.
+    *   Styled to match the existing theme (Light/Dark support).
 
-## Current Task: Dark/Light Mode & Deployment
+## Current Task: Partnership Inquiry Form & Deployment
 
-1.  **Modify `style.css`**: Introduce CSS variables for both light and dark modes.
-2.  **Update `index.html`**: Add a theme toggle button with a modern look.
-3.  **Update `main.js`**: Implement theme switching logic and persistence.
-4.  **Verification**: Ensure smooth transitions and correct styling in both modes.
-5.  **Deployment**: Commit all changes and push to the remote repository.
+1.  **Update `index.html`**: Add the HTML structure for the partnership form using the Formspree endpoint.
+2.  **Modify `style.css`**: Add styling for the form elements, ensuring they are responsive and theme-aware.
+3.  **Verification**: Test the layout and theme compatibility of the new form.
+4.  **Deployment**: Commit and push the changes.

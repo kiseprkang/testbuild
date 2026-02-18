@@ -10,6 +10,8 @@
     --btn-hover: #fc5c7d;
     --lotto-grad-1: #6a82fb;
     --lotto-grad-2: #fc5c7d;
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --input-border: #ddd;
 }
 
 body.dark {
@@ -24,6 +26,8 @@ body.dark {
     --btn-hover: #fdbb2d;
     --lotto-grad-1: #b21f1f;
     --lotto-grad-2: #fdbb2d;
+    --input-bg: rgba(50, 50, 50, 0.9);
+    --input-border: #444;
 }
 
 body {
@@ -31,19 +35,31 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     background-color: var(--bg-color);
     background-image: radial-gradient(circle at top left, var(--bg-gradient-1), transparent),
                       radial-gradient(circle at bottom right, var(--bg-gradient-2), transparent);
+    background-attachment: fixed;
     transition: background-color 0.3s ease, background-image 0.3s ease;
     color: var(--text-color);
+    padding: 40px 20px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
 }
 
 .theme-toggle {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
+    z-index: 1000;
 }
 
 #theme-btn {
@@ -68,7 +84,8 @@ body {
     transform: scale(1.1);
 }
 
-.lotto-container {
+.lotto-container, .partnership-container {
+    width: 100%;
     text-align: center;
     background-color: var(--container-bg);
     padding: 40px;
@@ -79,22 +96,25 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-.lotto-container:hover {
+.lotto-container:hover, .partnership-container:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px var(--shadow-color);
 }
 
-h1 {
+h1, h2 {
     color: var(--text-color);
     margin-bottom: 30px;
-    font-size: 2.5em;
     font-weight: 700;
     letter-spacing: -1px;
 }
 
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+
 .lotto-numbers {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 15px;
     margin-bottom: 40px;
 }
@@ -119,7 +139,7 @@ h1 {
     background: linear-gradient(145deg, var(--lotto-grad-2), var(--lotto-grad-1));
 }
 
-.generate-btn {
+.generate-btn, .submit-btn {
     background-color: var(--btn-bg);
     color: white;
     border: none;
@@ -132,12 +152,53 @@ h1 {
     box-shadow: 0 5px 15px var(--shadow-color);
 }
 
-.generate-btn:hover {
+.generate-btn:hover, .submit-btn:hover {
     background-color: var(--btn-hover);
     transform: translateY(-3px);
     box-shadow: 0 8px 20px var(--shadow-color);
 }
 
-.generate-btn:active {
+.generate-btn:active, .submit-btn:active {
     transform: translateY(-1px);
+}
+
+.inquiry-form {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 0.9em;
+    color: var(--text-color);
+}
+
+.form-group input, .form-group textarea {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    font-size: 1em;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--btn-bg);
+    box-shadow: 0 0 0 3px rgba(106, 130, 251, 0.2);
+}
+
+.submit-btn {
+    margin-top: 10px;
+    width: 100%;
 }
