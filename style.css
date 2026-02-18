@@ -12,6 +12,7 @@
     --lotto-grad-2: #fc5c7d;
     --input-bg: rgba(255, 255, 255, 0.9);
     --input-border: #ddd;
+    --ai-bar-bg: #e0e0e0;
 }
 
 body.dark {
@@ -28,6 +29,7 @@ body.dark {
     --lotto-grad-2: #fdbb2d;
     --input-bg: rgba(50, 50, 50, 0.9);
     --input-border: #444;
+    --ai-bar-bg: #333;
 }
 
 body {
@@ -87,7 +89,7 @@ body {
     transform: scale(1.1);
 }
 
-.lotto-container, .partnership-container, .comments-container {
+.ai-test-container, .lotto-container, .partnership-container, .comments-container {
     width: 100%;
     text-align: center;
     background-color: var(--container-bg);
@@ -100,15 +102,92 @@ body {
     box-sizing: border-box;
 }
 
-.comments-container {
-    text-align: left;
-}
-
-.lotto-container:hover, .partnership-container:hover, .comments-container:hover {
+.ai-test-container:hover, .lotto-container:hover, .partnership-container:hover, .comments-container:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px var(--shadow-color);
 }
 
+.subtitle {
+    font-size: 1.1em;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    margin-top: -20px;
+}
+
+/* AI Test Styling */
+.webcam-container {
+    margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    background-color: var(--ai-bar-bg);
+    box-shadow: 0 0 20px var(--shadow-color);
+}
+
+.webcam-container canvas {
+    display: block;
+}
+
+.label-container {
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.result-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.animal-label {
+    width: 80px;
+    text-align: right;
+    font-weight: 600;
+}
+
+.bar-wrapper {
+    flex-grow: 1;
+    background-color: var(--ai-bar-bg);
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--lotto-grad-1), var(--lotto-grad-2));
+    width: 0%;
+    transition: width 0.2s ease;
+}
+
+.percent-label {
+    width: 50px;
+    font-size: 0.9em;
+    font-weight: 700;
+}
+
+.ai-start-btn {
+    background-color: var(--btn-bg);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.ai-start-btn:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-3px);
+}
+
+/* Original Styles */
 h1, h2 {
     color: var(--text-color);
     margin-bottom: 30px;

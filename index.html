@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Number Generator</title>
+    <title>AI Animal Face Test & Lotto</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
     <div class="top-controls">
@@ -13,6 +15,15 @@
     </div>
 
     <div class="main-content">
+        <!-- Animal Face Test Section -->
+        <div class="ai-test-container">
+            <h2 data-i18n="aiTitle">AI Animal Face Test</h2>
+            <p class="subtitle" data-i18n="aiSubtitle">Dog? or Cat? Let AI decide!</p>
+            <div id="webcam-container" class="webcam-container"></div>
+            <div id="label-container" class="label-container"></div>
+            <button id="ai-start-btn" class="ai-start-btn" data-i18n="btnAiStart">Start AI Test</button>
+        </div>
+
         <div class="lotto-container">
             <h1 data-i18n="title">Lotto Number Generator</h1>
             <div id="lotto-numbers" class="lotto-numbers"></div>
@@ -42,16 +53,7 @@
             <h2 data-i18n="commentsTitle">Comments</h2>
             <div id="disqus_thread"></div>
             <script>
-                /**
-                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-                /*
-                var disqus_config = function () {
-                this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = 'lotto-generator-main'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-                };
-                */
-                (function() { // DON'T EDIT BELOW THIS LINE
+                (function() { 
                 var d = document, s = d.createElement('script');
                 s.src = 'https://kbtest-1.disqus.com/embed.js';
                 s.setAttribute('data-timestamp', +new Date());

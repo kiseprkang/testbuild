@@ -1,41 +1,32 @@
-# Lotto Number Generator
+# Lotto Number Generator & Animal Face Test
 
 ## Overview
 
-A simple web application to generate random lottery numbers with theme switching capabilities and community interaction.
+A multi-functional web application featuring a lottery number generator, an AI-powered animal face test, and community interaction.
 
 ## Features
 
-*   Displays 6 unique random numbers between 1 and 45.
-*   A button to generate a new set of numbers.
-*   Responsive design for different screen sizes.
-*   Dark/Light mode toggle for improved user experience.
-*   Theme preference persistence using `localStorage`.
-*   Partnership Inquiry form powered by Formspree for lead generation.
-*   **Disqus Integration**: Community comment section at the bottom of the page.
-*   **Multi-language Support**: Support for both English and Korean languages with a toggle.
+*   **Lotto Generator**: Displays 6 unique random numbers with a modern UI.
+*   **Animal Face Test**: Real-time AI analysis using Teachable Machine to determine if a user looks like a dog or a cat.
+*   **Theme System**: Dark/Light mode toggle with persistence.
+*   **Multi-language**: Support for English and Korean.
+*   **Inquiry Form**: Partnership form powered by Formspree.
+*   **Comments**: Community discussion via Disqus.
 
 ## Detailed Outline
 
-1.  **Initial Setup**: Basic HTML, CSS, and JS for generating and displaying lotto numbers.
-2.  **Modern Styling**: Glassmorphism effect, gradients, and responsive layout.
-3.  **Theme System**:
-    *   CSS variables for colors, backgrounds, and shadows.
-    *   A toggle switch/button in the UI.
-    *   JavaScript logic to switch classes on the `body` or `html` element.
-    *   Persistence of the selected theme in the browser's local storage.
-4.  **Partnership Inquiry Form**:
-    *   A clean, professional form section below the lotto generator.
-    *   Input fields for Name, Email, and Message.
-    *   Integration with Formspree for reliable email delivery.
-5.  **Community & Localization**:
-    *   **Disqus**: Embedded comment thread for user engagement.
-    *   **I18n**: Language toggle button and a translation map in JavaScript to switch all UI text between English and Korean.
+1.  **AI Animal Face Test**:
+    *   Integration of Teachable Machine Image Model.
+    *   Webcam access and real-time prediction display.
+    *   Visual feedback with progress bars for each animal type.
+    *   Responsive webcam container styled with glassmorphism.
+2.  **Theme & Localization**:
+    *   Consistent styling across all features.
+    *   Full translation of AI test instructions and results.
 
-## Current Task: Disqus & Korean Language Support
+## Current Task: AI Animal Face Test Integration
 
-1.  **Update `index.html`**: Add the language toggle button and the Disqus thread container.
-2.  **Modify `style.css`**: Style the language toggle and ensure the Disqus section blends well with the theme.
-3.  **Update `main.js`**: Implement the language switching logic, update UI strings dynamically, and persist language preference.
-4.  **Verification**: Test both languages and the comment section in different themes.
-5.  **Deployment**: Commit and push the changes.
+1.  **Update `index.html`**: Add the Teachable Machine script tags and the test UI structure.
+2.  **Modify `style.css`**: Style the webcam, result bars, and the "Start" button.
+3.  **Update `main.js`**: Implement the AI logic, webcam handling, and multi-language support for the test results.
+4.  **Deployment**: Push the final version to Git.
