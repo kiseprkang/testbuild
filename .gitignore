@@ -1,0 +1,11 @@
+# Logs
+*.log
+firebase-debug.log*
+
+# OS files
+.DS_Store
+thumbs.db
+
+# IDE files
+.vscode/
+.idx/
