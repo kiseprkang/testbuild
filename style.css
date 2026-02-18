@@ -1,1 +1,87 @@
-/* Add styles here */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f2f5;
+    background-image: radial-gradient(circle at top left, #a7c5eb, transparent),
+                      radial-gradient(circle at bottom right, #f7d8c4, transparent);
+    transition: background-color 0.3s ease;
+}
+
+.lotto-container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lotto-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.lotto-numbers {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.lotto-number {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #6a82fb, #fc5c7d);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.lotto-number:hover {
+    transform: scale(1.1);
+    background: linear-gradient(145deg, #fc5c7d, #6a82fb);
+}
+
+.generate-btn {
+    background-color: #6a82fb;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(106, 130, 251, 0.4);
+}
+
+.generate-btn:hover {
+    background-color: #fc5c7d;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(252, 92, 125, 0.5);
+}
+
+.generate-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(252, 92, 125, 0.4);
+}
