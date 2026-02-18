@@ -15,13 +15,22 @@
     </div>
 
     <div class="main-content">
-        <!-- Animal Face Test Section -->
+        <!-- Animal Face Test Section (Image Upload Version) -->
         <div class="ai-test-container">
             <h2 data-i18n="aiTitle">AI Animal Face Test</h2>
-            <p class="subtitle" data-i18n="aiSubtitle">Dog? or Cat? Let AI decide!</p>
-            <div id="webcam-container" class="webcam-container"></div>
+            <p class="subtitle" data-i18n="aiSubtitle">Upload your photo to find your animal twin!</p>
+            
+            <div class="upload-area" id="upload-area">
+                <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                <label for="image-upload" class="upload-label">
+                    <div id="image-preview" class="image-preview">
+                        <span id="upload-text" data-i18n="uploadText">Click to upload your photo</span>
+                    </div>
+                </label>
+            </div>
+
             <div id="label-container" class="label-container"></div>
-            <button id="ai-start-btn" class="ai-start-btn" data-i18n="btnAiStart">Start AI Test</button>
+            <button id="ai-start-btn" class="ai-start-btn" data-i18n="btnAiStart" style="display: none;">Analyze Face</button>
         </div>
 
         <div class="lotto-container">

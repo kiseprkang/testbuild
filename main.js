@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeBtn = document.getElementById('theme-btn');
     const langBtn = document.getElementById('lang-btn');
     const aiStartBtn = document.getElementById('ai-start-btn');
+    const imageUpload = document.getElementById('image-upload');
+    const imagePreview = document.getElementById('image-preview');
+    const uploadText = document.getElementById('upload-text');
     const body = document.body;
 
     // Translations
@@ -22,8 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
             commentsTitle: "Comments",
             langName: "KO",
             aiTitle: "AI Animal Face Test",
-            aiSubtitle: "Dog? or Cat? Let AI decide!",
-            btnAiStart: "Start AI Test",
+            aiSubtitle: "Upload your photo to find your animal twin!",
+            btnAiStart: "Analyze Face",
+            uploadText: "Click to upload your photo",
             dog: "Dog",
             cat: "Cat"
         },
@@ -41,8 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
             commentsTitle: "댓글",
             langName: "EN",
             aiTitle: "AI 동물상 테스트",
-            aiSubtitle: "강아지상? 고양이상? AI에게 물어보세요!",
-            btnAiStart: "테스트 시작",
+            aiSubtitle: "사진을 업로드하여 당신의 동물상을 확인하세요!",
+            btnAiStart: "결과 분석하기",
+            uploadText: "클릭하여 사진을 업로드하세요",
             dog: "강아지상",
             cat: "고양이상"
         }
@@ -68,8 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         langBtn.textContent = translations[lang].langName;
         localStorage.setItem('lang', lang);
-        
-        // Update AI labels if they exist
         updateAiLabels();
     }
 
@@ -117,60 +120,76 @@ document.addEventListener('DOMContentLoaded', () => {
         displayNumbers(newNumbers);
     });
 
-    // Teachable Machine Logic
-    const URL = "https://teachablemachine.withgoogle.com/models/EmSS03bmU/";
-    let model, webcam, labelContainer, maxPredictions;
+    // Teachable Machine Logic (Image Upload Version)
+    const MODEL_URL = "https://teachablemachine.withgoogle.com/models/EmSS03bmU/";
+    let model, labelContainer, maxPredictions;
+    let uploadedImageElement = null;
 
-    async function initAi() {
-        aiStartBtn.style.display = 'none';
-        const modelURL = URL + "model.json";
-        const metadataURL = URL + "metadata.json";
-
+    async function loadModel() {
+        if (model) return;
+        const modelURL = MODEL_URL + "model.json";
+        const metadataURL = MODEL_URL + "metadata.json";
         model = await tmImage.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
+    }
 
-        const flip = true;
-        webcam = new tmImage.Webcam(200, 200, flip);
-        await webcam.setup();
-        await webcam.play();
-        window.requestAnimationFrame(loop);
+    imageUpload.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
 
-        document.getElementById("webcam-container").appendChild(webcam.canvas);
-        labelContainer = document.getElementById("label-container");
+        const reader = new FileReader();
+        reader.onload = async (event) => {
+            const img = new Image();
+            img.onload = async () => {
+                imagePreview.innerHTML = '';
+                imagePreview.appendChild(img);
+                uploadedImageElement = img;
+                aiStartBtn.style.display = 'block';
+                
+                // Clear previous results
+                if (labelContainer) labelContainer.innerHTML = '';
+            };
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+
+    async function predict() {
+        if (!model) await loadModel();
+        if (!uploadedImageElement) return;
+
+        aiStartBtn.disabled = true;
+        aiStartBtn.textContent = currentLang === 'ko' ? '분석 중...' : 'Analyzing...';
+
+        const prediction = await model.predict(uploadedImageElement);
+        
+        // Setup container if not exists
+        if (!labelContainer) {
+            labelContainer = document.getElementById("label-container");
+        }
+        labelContainer.innerHTML = '';
+
         for (let i = 0; i < maxPredictions; i++) {
+            const probability = (prediction[i].probability * 100).toFixed(0);
             const item = document.createElement("div");
             item.className = "result-bar-item";
             item.innerHTML = `
                 <div class="animal-label" id="label-${i}"></div>
                 <div class="bar-wrapper">
-                    <div class="bar-fill" id="bar-${i}"></div>
+                    <div class="bar-fill" id="bar-${i}" style="width: ${probability}%"></div>
                 </div>
-                <div class="percent-label" id="percent-${i}">0%</div>
+                <div class="percent-label" id="percent-${i}">${probability}%</div>
             `;
             labelContainer.appendChild(item);
         }
+        
         updateAiLabels();
-    }
-
-    async function loop() {
-        webcam.update();
-        await predict();
-        window.requestAnimationFrame(loop);
-    }
-
-    async function predict() {
-        const prediction = await model.predict(webcam.canvas);
-        for (let i = 0; i < maxPredictions; i++) {
-            const probability = (prediction[i].probability * 100).toFixed(0);
-            document.getElementById(`bar-${i}`).style.width = probability + "%";
-            document.getElementById(`percent-${i}`).textContent = probability + "%";
-        }
+        aiStartBtn.disabled = false;
+        aiStartBtn.textContent = translations[currentLang].btnAiStart;
     }
 
     function updateAiLabels() {
         if (!labelContainer) return;
-        // In this specific model: Class 0 is Dog, Class 1 is Cat (usually)
-        // Adjusting based on common Teachable Machine order or provided labels
         const classes = ['dog', 'cat']; 
         for (let i = 0; i < maxPredictions; i++) {
             const labelEl = document.getElementById(`label-${i}`);
@@ -181,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    aiStartBtn.addEventListener('click', initAi);
+    aiStartBtn.addEventListener('click', predict);
 
     // Initial setup
     updateLanguage(currentLang);
