@@ -2,7 +2,7 @@
 
 ## Overview
 
-A simple web application to generate random lottery numbers with theme switching capabilities.
+A simple web application to generate random lottery numbers with theme switching capabilities and community interaction.
 
 ## Features
 
@@ -12,6 +12,8 @@ A simple web application to generate random lottery numbers with theme switching
 *   Dark/Light mode toggle for improved user experience.
 *   Theme preference persistence using `localStorage`.
 *   Partnership Inquiry form powered by Formspree for lead generation.
+*   **Disqus Integration**: Community comment section at the bottom of the page.
+*   **Multi-language Support**: Support for both English and Korean languages with a toggle.
 
 ## Detailed Outline
 
@@ -26,11 +28,14 @@ A simple web application to generate random lottery numbers with theme switching
     *   A clean, professional form section below the lotto generator.
     *   Input fields for Name, Email, and Message.
     *   Integration with Formspree for reliable email delivery.
-    *   Styled to match the existing theme (Light/Dark support).
+5.  **Community & Localization**:
+    *   **Disqus**: Embedded comment thread for user engagement.
+    *   **I18n**: Language toggle button and a translation map in JavaScript to switch all UI text between English and Korean.
 
-## Current Task: Partnership Inquiry Form & Deployment
+## Current Task: Disqus & Korean Language Support
 
-1.  **Update `index.html`**: Add the HTML structure for the partnership form using the Formspree endpoint.
-2.  **Modify `style.css`**: Add styling for the form elements, ensuring they are responsive and theme-aware.
-3.  **Verification**: Test the layout and theme compatibility of the new form.
-4.  **Deployment**: Commit and push the changes.
+1.  **Update `index.html`**: Add the language toggle button and the Disqus thread container.
+2.  **Modify `style.css`**: Style the language toggle and ensure the Disqus section blends well with the theme.
+3.  **Update `main.js`**: Implement the language switching logic, update UI strings dynamically, and persist language preference.
+4.  **Verification**: Test both languages and the comment section in different themes.
+5.  **Deployment**: Commit and push the changes.
