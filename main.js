@@ -1,7 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     const lottoNumbersDiv = document.getElementById('lotto-numbers');
     const generateBtn = document.getElementById('generate-btn');
+    const themeBtn = document.getElementById('theme-btn');
+    const body = document.body;
 
+    // Theme logic
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        body.classList.add('dark');
+        themeBtn.textContent = '☀️';
+    }
+
+    themeBtn.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        const isDark = body.classList.contains('dark');
+        themeBtn.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+
+    // Lotto generation logic
     function generateNumbers() {
         const numbers = new Set();
         while (numbers.size < 6) {
