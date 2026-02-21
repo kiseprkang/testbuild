@@ -4,19 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Animal Face Test & Lotto</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y0966WKZNJ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Y0966WKZNJ');
+    </script>
+    <meta name="google-adsense-account" content="ca-pub-7889560548048386">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7889560548048386"
+     crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
-    <div class="top-controls">
-        <button id="lang-btn" class="control-btn" aria-label="Toggle Language">KO</button>
-        <button id="theme-btn" class="control-btn" aria-label="Toggle Dark/Light Mode">🌙</button>
-    </div>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo" data-i18n="logo">AI Animal Twin</div>
+            <nav class="site-nav">
+                <a href="#ai-test" data-i18n="navAi">AI Test</a>
+                <a href="#lotto" data-i18n="navLotto">Lotto</a>
+                <a href="#about" data-i18n="navAbout">About</a>
+                <a href="#how-it-works" data-i18n="navHow">How it Works</a>
+            </nav>
+            <div class="top-controls">
+                <button id="lang-btn" class="control-btn" aria-label="Toggle Language">KO</button>
+                <button id="theme-btn" class="control-btn" aria-label="Toggle Dark/Light Mode">🌙</button>
+            </div>
+        </div>
+    </header>
 
-    <div class="main-content">
-        <!-- Animal Face Test Section (Image Upload Version) -->
-        <div class="ai-test-container">
+    <main class="main-content">
+        <!-- AI Test Section -->
+        <section id="ai-test" class="ai-test-container">
             <h2 data-i18n="aiTitle">AI Animal Face Test</h2>
             <p class="subtitle" data-i18n="aiSubtitle">Upload your photo to find your animal twin!</p>
             
@@ -31,15 +54,55 @@
 
             <div id="label-container" class="label-container"></div>
             <button id="ai-start-btn" class="ai-start-btn" data-i18n="btnAiStart" style="display: none;">Analyze Face</button>
+        </section>
+
+        <!-- AdSense Section 1 -->
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7889560548048386"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
 
-        <div class="lotto-container">
-            <h1 data-i18n="title">Lotto Number Generator</h1>
+        <!-- Lotto Section -->
+        <section id="lotto" class="lotto-container">
+            <h2 data-i18n="title">Lotto Number Generator</h2>
             <div id="lotto-numbers" class="lotto-numbers"></div>
             <button id="generate-btn" class="generate-btn" data-i18n="generate">Generate Numbers</button>
-        </div>
+        </section>
 
-        <div class="partnership-container">
+        <!-- About Section (Rich Content for AdSense) -->
+        <section id="about" class="info-section">
+            <h2 data-i18n="aboutTitle">About AI Animal Twin</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3 data-i18n="aboutAiTitle">Advanced AI Analysis</h3>
+                    <p data-i18n="aboutAiText">Our AI uses Google's Teachable Machine technology to analyze facial features and match them with animal archetypes. It's a fun way to see which animal you resemble most!</p>
+                </div>
+                <div class="info-card">
+                    <h3 data-i18n="aboutLottoTitle">Fair Lotto Logic</h3>
+                    <p data-i18n="aboutLottoText">Our lottery generator uses a cryptographically-inspired randomization algorithm to ensure truly unique and unbiased number combinations for your next draw.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it Works Section -->
+        <section id="how-it-works" class="info-section">
+            <h2 data-i18n="howTitle">How it Works</h2>
+            <ol class="step-list">
+                <li data-i18n="step1">Upload a clear front-facing photo of yourself.</li>
+                <li data-i18n="step2">The AI analyzes facial proportions, eye shape, and structure.</li>
+                <li data-i18n="step3">Get instant results with percentage match for different animal types.</li>
+            </ol>
+        </section>
+
+        <!-- Partnership Section -->
+        <section id="contact" class="partnership-container">
             <h2 data-i18n="formTitle">Partnership Inquiry</h2>
             <form action="https://formspree.io/f/mlgwljdn" method="POST" class="inquiry-form">
                 <div class="form-group">
@@ -56,10 +119,23 @@
                 </div>
                 <button type="submit" class="submit-btn" data-i18n="btnSend">Send Inquiry</button>
             </form>
+        </section>
+
+        <!-- AdSense Section 2 -->
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-7889560548048386"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
 
-        <div class="comments-container">
-            <h2 data-i18n="commentsTitle">Comments</h2>
+        <section id="comments" class="comments-container">
+            <h2 data-i18n="commentsTitle">Community Comments</h2>
             <div id="disqus_thread"></div>
             <script>
                 (function() { 
@@ -69,7 +145,24 @@
                 (d.head || d.body).appendChild(s);
                 })();
             </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 AI Animal Twin. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" id="privacy-link" data-i18n="privacy">Privacy Policy</a>
+                <a href="#" id="terms-link" data-i18n="terms">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals for Legal Content -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-modal" class="close-modal">&times;</button>
+            <div id="modal-body"></div>
         </div>
     </div>
     <script src="main.js"></script>
